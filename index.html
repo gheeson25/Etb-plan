@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETB - Empower The Base | Digital Earning Platform</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Poppins for headings, Inter for body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles for body and headings */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #2d3748; /* Dark text for better readability */
+            background: linear-gradient(to right bottom, #edf2f7, #e2e8f0); /* Soft gradient background */
+            line-height: 1.6;
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            color: #1e3a8a; /* Deeper blue for titles */
+        }
+
+        /* Reusable button styles */
+        .btn-primary {
+            @apply bg-gradient-to-r from-indigo-600 to-purple-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-all duration-300 ease-in-out hover:from-indigo-700 hover:to-purple-800 hover:scale-105;
+        }
+        .btn-secondary {
+            @apply bg-transparent text-indigo-700 border-2 border-indigo-700 font-semibold py-3 px-8 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-indigo-700 hover:text-white hover:scale-105;
+        }
+
+        /* Card container for sections */
+        .card {
+            @apply bg-white p-6 md:p-8 rounded-2xl shadow-xl transition-transform duration-300 hover:scale-[1.005] border border-gray-200;
+        }
+
+        /* Section titles with underline effect */
+        .section-title {
+            font-size: 2.5rem; /* Larger titles */
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.75rem;
+            color: #1e3a8a; /* Consistent title color */
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px; /* Shorter underline */
+            height: 4px;
+            background-color: #6366f1; /* Accent color for underline */
+            border-radius: 2px;
+        }
+
+        /* Subtitle styling for income sections */
+        .subtitle {
+            font-family: 'Poppins', sans-serif;
+            color: #2c5282; /* Slightly lighter blue for subtitles */
+            font-weight: 600;
+            font-size: 1.75rem; /* Adjusted subtitle size */
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .subtitle svg {
+            margin-right: 0.75rem;
+            color: #4c51bf; /* Icon color */
+        }
+
+        /* Highlighted text colors */
+        .highlight-text {
+            color: #059669; /* Green for positive values */
+            font-weight: 700;
+        }
+        .highlight-value {
+            color: #ef4444; /* Red for important figures */
+            font-weight: 700;
+        }
+
+        /* Table styling */
+        .table-header {
+            background-color: #3f51b5; /* Deeper blue for table headers */
+            color: #ffffff;
+            font-weight: 600;
+        }
+        .table-row-even {
+            background-color: #e8eaf6; /* Light purple-blue for even rows */
+        }
+        .table-row-odd {
+            background-color: #f0f4f8; /* Very light grey-blue for odd rows */
+        }
+        .table-row-even:hover, .table-row-odd:hover {
+            background-color: #d1d5db; /* Hover effect for table rows */
+        }
+
+        /* Sticky Navbar */
+        .navbar-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        /* Mobile menu styling */
+        #mobile-menu.hidden {
+            display: none;
+        }
+        @media (min-width: 768px) {
+            #mobile-menu {
+                display: flex !important; /* Always show on desktop */
+            }
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-6 md:p-8">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="py-4 px-6 md:px-8 transition-all duration-300 rounded-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#hero" class="text-3xl font-bold text-indigo-700 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap mr-2 text-purple-600">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                </svg>
+                ETB
+            </a>
+
+            <!-- Mobile Menu Button (Hamburger) -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-indigo-700 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
+                        <line x1="4" x2="20" y1="12" y2="12"/>
+                        <line x1="4" x2="20" y1="6" y2="6"/>
+                        <line x1="4" x2="20" y1="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Desktop Menu -->
+            <ul class="hidden md:flex space-x-8 text-lg font-medium">
+                <li><a href="#home-section" class="text-gray-600 hover:text-indigo-700 transition-colors">Home</a></li>
+                <li><a href="#about-section" class="text-gray-600 hover:text-indigo-700 transition-colors">About Us</a></li>
+                <li><a href="#business-plan-section" class="text-gray-600 hover:text-indigo-700 transition-colors">Business Plan</a></li>
+                <li><a href="#why-etb-section" class="text-gray-600 hover:text-indigo-700 transition-colors">Why ETB?</a></li>
+                <li><a href="#get-started-section" class="text-gray-600 hover:text-indigo-700 transition-colors">Get Started</a></li>
+            </ul>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="md:hidden mt-4 hidden bg-white rounded-lg shadow-md">
+            <ul class="flex flex-col space-y-2 text-lg font-medium px-4 py-2">
+                <li><a href="#home-section" class="block text-gray-700 hover:text-indigo-700 py-2">Home</a></li>
+                <li><a href="#about-section" class="block text-gray-700 hover:text-indigo-700 py-2">About Us</a></li>
+                <li><a href="#business-plan-section" class="block text-gray-700 hover:text-indigo-700 py-2">Business Plan</a></li>
+                <li><a href="#why-etb-section" class="block text-gray-700 hover:text-indigo-700 py-2">Why ETB?</a></li>
+                <li><a href="#get-started-section" class="block text-gray-700 hover:text-indigo-700 py-2">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="max-w-4xl mx-auto">
+        <!-- Hero Section -->
+        <section id="hero" class="text-center mb-10 p-6 bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-3xl shadow-xl">
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-4 font-poppins">ETB – Empower The Base ✨</h1>
+            <p class="text-xl md:text-2xl leading-relaxed mb-6">
+                Welcome to ETB, a powerful digital platform built to empower individuals through affordable entry and long-term income potential. With just a one-time $20 entry, ETB opens the door to a lifetime of passive income through a structured, community-driven model.
+            </p>
+            <div class="inline-block bg-white text-indigo-700 px-6 py-3 rounded-full shadow-lg text-2xl font-semibold">
+                <span class="inline-flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-package mr-2">
+                        <path d="m7.5 4.27 9 5.15" />
+                        <path d="m7.5 19.73 9-5.15" />
+                        <path d="M3.35 12.61 12 17.77l8.65-5.16" />
+                        <path d="M12 2.23 3.35 7.39 12 12.55l8.65-5.16Z" />
+                        <path d="m12 17.77 8.65 5.16" />
+                        <path d="m12 17.77-8.65 5.16" />
+                    </svg>
+                    One-Time Entry: Just $20
+                </span>
+            </div>
+        </section>
+
+        <!-- Home Section -->
+        <section id="home-section" class="card">
+            <h2 class="section-title">🏠 Home</h2>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4 text-center">
+                <span class="font-bold text-blue-800 text-2xl">💡 Start Your Digital Earning Journey with Just $20</span>
+            </p>
+            <p class="text-lg text-gray-700 leading-relaxed text-center">
+                ETB is designed for the people. Whether you're a student, a freelancer, or a full-time worker looking for side income — ETB gives you a reliable, transparent, and scalable income model.
+                <br>One small step today can lead to a lifetime of earnings.
+            </p>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about-section" class="card mt-8">
+            <h2 class="section-title">👥 About Us</h2>
+            <p class="text-lg text-gray-700 leading-relaxed text-center">
+                ETB (Empower The Base) is built by a team of experienced developers, marketers, and financial strategists who believe in fair income distribution and digital empowerment. We aim to provide a simple yet powerful system for people to earn, grow, and lead in the digital economy.
+            </p>
+
+            <!-- Our Mission -->
+            <h3 class="subtitle mt-8 mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target">
+                    <circle cx="12" cy="12" r="10"/>
+                    <circle cx="12" cy="12" r="6"/>
+                    <circle cx="12" cy="12" r="2"/>
+                </svg>
+                Our Mission
+            </h3>
+            <ul class="list-none pl-0 space-y-3 text-lg text-gray-700">
+                <li class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle text-green-500 mr-2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <path d="m9 11 2 2 4-4"/>
+                    </svg>
+                    To make digital income simple and accessible
+                </li>
+                <li class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle text-green-500 mr-2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <path d="m9 11 2 2 4-4"/>
+                    </svg>
+                    To help individuals achieve financial freedom
+                </li>
+                <li class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle text-green-500 mr-2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <path d="m9 11 2 2 4-4"/>
+                    </svg>
+                    To provide a transparent and scalable earning platform for everyone
+                </li>
+            </ul>
+
+            <!-- Our Vision -->
+            <h3 class="subtitle mt-8 mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye">
+                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                </svg>
+                Our Vision
+            </h3>
+            <p class="text-lg text-gray-700 leading-relaxed text-center">
+                We envision a global community of financially independent individuals who grow together through the power of networks and ethical digital income streams.
+            </p>
+        </section>
+
+        <!-- Business Plan Overview Section -->
+        <section id="business-plan-section" class="card mt-8">
+            <h2 class="section-title">📊 Business Plan Overview</h2>
+
+            <!-- Income Structure -->
+            <div class="mb-8 p-6 bg-blue-50 rounded-xl border border-blue-200">
+                <h3 class="subtitle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dollar-sign">
+                        <line x1="12" x2="12" y1="2" y2="22"/>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                    </svg>
+                    Income Structure
+                </h3>
+
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold text-gray-800 mb-2 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-circle text-green-500 mr-2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 12h8"/>
+                            <path d="m12 16 4-4-4-4"/>
+                        </svg>
+                        1. Direct Referral Bonus – 10%
+                    </h4>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        For every direct referral, you earn <span class="highlight-text">$2 instantly</span> (10% of $20).
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed mt-2">
+                        <span class="font-bold text-blue-600">💡 Example:</span> Refer 10 people → 10 × $2 = <span class="highlight-text">$20</span> direct income.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-semibold text-gray-800 mb-2 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layers text-purple-500 mr-2">
+                            <path d="m12.83 2.18-.32.96a4 4 0 0 0-1.75 4.05 4 4 0 0 0 4.05-1.75l.96-.32a.5.5 0 0 0 .28-.84l-1.94-2a.5.5 0 0 0-.84.28Z"/>
+                            <path d="m19.31 9.32-.32.96a4 4 0 0 0-1.75 4.05 4 4 0 0 0 4.05-1.75l.96-.32a.5.5 0 0 0 .28-.84l-1.94-2a.5.5 0 0 0-.84.28Z"/>
+                            <path d="m5.18 19.31-.32.96a4 4 0 0 0-1.75 4.05 4 4 0 0 0 4.05-1.75l.96-.32a.5.5 0 0 0 .28-.84l-1.94-2a.5.5 0 0 0-.84.28Z"/>
+                            <path d="m12.83 19.82-.32.96a4 4 0 0 0-1.75 4.05 4 4 0 0 0 4.05-1.75l.96-.32a.5.5 0 0 0 .28-.84l-1.94-2a.5.5 0 0 0-.84.28Z"/>
+                            <path d="m2.18 12.83-.32.96a4 4 0 0 0-1.75 4.05 4 4 0 0 0 4.05-1.75l.96-.32a.5.5 0 0 0 .28-.84l-1.94-2a.5.5 0 0 0-.84.28Z"/>
+                            <path d="m19.82 5.18-.32.96a4 4 0 0 0-1.75 4.05 4 4 0 0 0 4.05-1.75l.96-.32a.5.5 0 0 0 .28-.84l-1.94-2a.5.5 0 0 0-.84.28Z"/>
+                        </svg>
+                        2. Team Level Income – 15 Levels Deep
+                    </h4>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                        Earn <span class="highlight-text">5% income from each member on every level</span>, up to 15 levels deep. This allows you to earn even from people you didn't directly refer.
+                    </p>
+                    <div class="overflow-x-auto rounded-lg shadow-md border border-gray-200">
+                        <table class="min-w-full text-left text-base whitespace-nowrap">
+                            <thead class="table-header">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">Level</th>
+                                    <th scope="col" class="px-6 py-3">Bonus %</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="table-row-even">
+                                    <td class="px-6 py-4">1–15</td>
+                                    <td class="px-6 py-4">5% each</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-lg text-gray-700 leading-relaxed mt-4">
+                        <span class="font-bold text-blue-600">💡 This structure rewards both your effort and your team’s growth.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Level Unlocking Criteria -->
+            <div class="p-6 bg-purple-50 rounded-xl border border-purple-200 mt-8">
+                <h3 class="subtitle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock-open">
+                        <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                    Level Unlocking Criteria
+                </h3>
+                <p class="text-lg text-gray-700 leading-relaxed mb-6 text-center">
+                    Income from each level unlocks based on how many people you directly refer:
+                </p>
+                <div class="overflow-x-auto rounded-lg shadow-md border border-gray-200">
+                    <table class="min-w-full text-left text-base whitespace-nowrap">
+                        <thead class="table-header">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">Direct Referrals</th>
+                                <th scope="col" class="px-6 py-3">Levels Unlocked</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-row-even">
+                                <td class="px-6 py-4">2</td>
+                                <td class="px-6 py-4">Level 4</td>
+                            </tr>
+                            <tr class="table-row-odd">
+                                <td class="px-6 py-4">5</td>
+                                <td class="px-6 py-4">Level 5</td>
+                            </tr>
+                            <tr class="table-row-even">
+                                <td class="px-6 py-4">6</td>
+                                <td class="px-6 py-4">Level 6</td>
+                            </tr>
+                            <!-- Loop for levels 7 to 15 -->
+                            <script>
+                                for (let i = 7; i <= 15; i++) {
+                                    document.write(`<tr class="${i % 2 === 0 ? 'table-row-even' : 'table-row-odd'}">`);
+                                    document.write(`<td class="px-6 py-4">${i}</td>`);
+                                    document.write(`<td class="px-6 py-4">Level ${i}</td>`);
+                                    document.write(`</tr>`);
+                                }
+                            </script>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-lg text-gray-700 mt-6 text-center bg-blue-100 p-4 rounded-xl shadow-inner">
+                    <span class="highlight-text">✅ Team of 100 Members (any depth):</span> If you build a team of 100 members, all 15 levels unlock automatically — regardless of how many people you personally referred.
+                </p>
+            </div>
+
+            <!-- Income Distribution Breakdown -->
+            <div class="p-6 bg-yellow-50 rounded-xl border border-yellow-200 mt-8">
+                <h3 class="subtitle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bar-chart-2">
+                        <line x1="18" x2="18" y1="20" y2="10"/>
+                        <line x1="12" x2="12" y1="20" y2="4"/>
+                        <line x1="6" x2="6" y1="20" y2="14"/>
+                    </svg>
+                    Income Distribution <span class="text-gray-600">(from Each $20 Package)</span>
+                </h3>
+                <p class="text-lg text-gray-700 leading-relaxed mb-6 text-center">
+                    Understand how your investment is distributed:
+                </p>
+                <div class="overflow-x-auto rounded-lg shadow-md border border-gray-200">
+                    <table class="min-w-full text-left text-base whitespace-nowrap">
+                        <thead class="table-header">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">Component</th>
+                                <th scope="col" class="px-6 py-3">Amount ($)</th>
+                                <th scope="col" class="px-6 py-3">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-row-even">
+                                <td class="px-6 py-4">Direct Referral Bonus</td>
+                                <td class="px-6 py-4 highlight-text">$2.00</td>
+                                <td class="px-6 py-4">Instantly paid to the referrer</td>
+                            </tr>
+                            <tr class="table-row-odd">
+                                <td class="px-6 py-4">Level Income</td>
+                                <td class="px-6 py-4 highlight-text">$15.00</td>
+                                <td class="px-6 py-4">Distributed across 15 levels</td>
+                            </tr>
+                            <tr class="table-row-even">
+                                <td class="px-6 py-4">Creator Share</td>
+                                <td class="px-6 py-4 highlight-text">$2.00</td>
+                                <td class="px-6 py-4">Platform management and maintenance</td>
+                            </tr>
+                            <tr class="table-row-odd">
+                                <td class="px-6 py-4">Dev & Promotion Bonus</td>
+                                <td class="px-6 py-4 highlight-text">$1.00</td>
+                                <td class="px-6 py-4">Used for platform growth and rewards</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Development & Promotion Bonus -->
+            <div class="p-6 bg-red-50 rounded-xl border border-red-200 mt-8">
+                <h3 class="subtitle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rocket">
+                        <path d="M4.5 16.5c-1.5 1.5-2.5 3-2.5 3s.5-1 2-2.5c1.5-1.5 3-2.5 3-2.5s-1 0-2.5 1.5c-1.5 1.5-3 2.5-3 2.5Z"/>
+                        <path d="M12 21.5c-1.5 1.5-2.5 3-2.5 3s.5-1 2-2.5c1.5-1.5 3-2.5 3-2.5s-1 0-2.5 1.5c-1.5 1.5-3 2.5-3 2.5Z"/>
+                        <path d="M19.5 16.5c-1.5 1.5-2.5 3-2.5 3s.5-1 2-2.5c1.5-1.5 3-2.5 3-2.5s-1 0-2.5 1.5c-1.5 1.5-3 2.5-3 2.5Z"/>
+                        <path d="M7.5 12.5c-1.5 1.5-2.5 3-2.5 3s.5-1 2-2.5c1.5-1.5 3-2.5 3-2.5s-1 0-2.5 1.5c-1.5 1.5-3 2.5-3 2.5Z"/>
+                        <path d="M12 7.5c-1.5 1.5-2.5 3-2.5 3s.5-1 2-2.5c1.5-1.5 3-2.5 3-2.5s-1 0-2.5 1.5c-1.5 1.5-3 2.5-3 2.5Z"/>
+                        <path d="M16.5 12.5c-1.5 1.5-2.5 3-2.5 3s.5-1 2-2.5c1.5-1.5 3-2.5 3-2.5s-1 0-2.5 1.5c-1.5 1.5-3 2.5-3 2.5Z"/>
+                    </svg>
+                    Development & Promotion Bonus <span class="text-gray-600">(5%) Breakdown</span>
+                </h3>
+                <p class="text-lg text-gray-700 leading-relaxed mb-6 text-center">
+                    To support system growth and reward contributors:
+                </p>
+                <ul class="list-none pl-0 space-y-4 text-lg text-gray-700">
+                    <li class="flex items-start bg-emerald-50 p-4 rounded-xl border border-emerald-200 shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award text-emerald-600 mr-3 mt-1">
+                            <circle cx="12" cy="8" r="7"/>
+                            <polyline points="8.21 13.89 7 23 12 18 17 23 15.79 13.89"/>
+                        </svg>
+                        <div>
+                            <span class="font-bold text-emerald-700">2.5% – Active Promoters:</span> Given to members who help grow the platform through training, content, or outreach.
+                        </div>
+                    </li>
+                    <li class="flex items-start bg-orange-50 p-4 rounded-xl border border-orange-200 shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users text-orange-600 mr-3 mt-1">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                        <div>
+                            <span class="font-bold text-orange-700">1.25% – Team Size ≥ 1,000:</span> Equally shared among qualifying members.
+                        </div>
+                    </li>
+                    <li class="flex items-start bg-red-50 p-4 rounded-xl border border-red-200 shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check text-red-600 mr-3 mt-1">
+                            <path d="M20 13c0 5-6 9-8 9s-8-4-8-9V5l8-3 8 3z"/>
+                            <path d="m9 12 2 2 4-4"/>
+                        </svg>
+                        <div>
+                            <span class="font-bold text-red-700">1.25% – Team Size ≥ 5,000:</span> Shared among top-performing leaders.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Royalty Bonus -->
+            <div class="p-6 bg-indigo-50 rounded-xl border border-indigo-200 mt-8">
+                <h3 class="subtitle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-crown">
+                        <path d="m14.2 2-2.2 4-2.2-4"/>
+                        <path d="M5 12s-4 4-4 8 7 1 7 1h12s1-5-4-8-4-4-4-8-4 4-4 8-4-4-4-8-4 4-4 8-4 4-4 8z"/>
+                    </svg>
+                    Royalty Bonus
+                </h3>
+                <p class="text-lg text-gray-800 leading-relaxed mb-4">
+                    Members with a team of <span class="highlight-value">10,000 or more</span> become eligible for <span class="highlight-text">50% of the Missed Payment Pool</span>.
+                </p>
+                <p class="text-lg text-gray-800 leading-relaxed">
+                    <span class="font-bold text-indigo-700">📅 Royalty will be distributed monthly or quarterly.</span>
+                </p>
+                <p class="text-lg text-gray-800 leading-relaxed mt-4">
+                    <span class="font-bold text-blue-600">💡 The Missed Payment Pool</span> consists of commissions that go unclaimed due to ineligibility or inactivity.
+                </p>
+            </div>
+        </section>
+
+        <!-- Why ETB? Section -->
+        <section id="why-etb-section" class="card mt-8">
+            <h2 class="section-title">🔑 Why ETB?</h2>
+            <ul class="list-none pl-0 space-y-3 text-lg text-gray-700">
+                <li class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check text-green-500 mr-3">
+                        <path d="M20 13c0 5-6 9-8 9s-8-4-8-9V5l8-3 8 3z"/>
+                        <path d="m9 12 2 2 4-4"/>
+                    </svg>
+                    <span class="font-medium">Low-risk, high-reward model</span>
+                </li>
+                <li class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dollar-sign text-red-500 mr-3">
+                        <line x1="12" x2="12" y1="2" y2="22"/>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                    </svg>
+                    <span class="font-medium">No monthly fees</span>
+                </li>
+                <li class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-brain text-purple-500 mr-3">
+                        <path d="M9.5 22a2.5 2.5 0 0 1 0-5L12 15h2a2 2 0 0 1 2 2v2"/>
+                        <path d="M16 22a2.5 2.5 0 0 0 0-5L12 15l-1.45-1.45A6 6 0 0 0 5 6c0-3.3 2.7-6 6-6 .5 0 1 .07 1.5.21V10l4.5 4.5a2.5 2.5 0 0 1 0 5L12 22h-2.5z"/>
+                    </svg>
+                    <span class="font-medium">Simple logic, powerful earning</span>
+                </li>
+                <li class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe text-blue-500 mr-3">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                        <path d="M2 12h20"/>
+                    </svg>
+                    <span class="font-medium">Global scalability</span>
+                </li>
+                <li class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap text-orange-500 mr-3">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                    </svg>
+                    <span class="font-medium">Instant payout system</span>
+                </li>
+                <li class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users text-green-500 mr-3">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                    <span class="font-medium">Built for community success</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Highlights & Benefits Section -->
+        <section class="card mt-8">
+            <h2 class="section-title">🌟 Highlights & Benefits</h2>
+            <ul class="list-none pl-0 space-y-3 text-lg text-gray-700">
+                <li class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle text-green-500 mr-3">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <path d="m9 11 2 2 4-4"/>
+                    </svg>
+                    <span class="font-medium">One-time <span class="highlight-value">$20</span> entry</span>
+                </li>
+                <li class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-infinity text-green-500 mr-3">
+                        <path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8c0 1.5-.5 3-1.34 4.34m-2.86-1.57A8 8 0 0 0 12 4a8 8 0 0 0-8 8 8 8 0 0 0 8 8c1.5 0 3-.5 4.34-1.34"/>
+                        <path d="M17 12c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4Z"/>
+                        <line x1="2" x2="22" y1="12" y2="12"/>
+                    </svg>
+                    <span class="font-medium">Lifetime earning potential</span>
+                </li>
+                <li class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trending-up text-green-500 mr-3">
+                        <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+                        <polyline points="16 7 22 7 22 13"/>
+                    </svg>
+                    <span class="font-medium">15-level deep passive income</span>
+                </li>
+                <li class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock-open text-green-500 mr-3">
+                        <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                    <span class="font-medium">Automatic level unlocking with team growth</span>
+                </li>
+                <li class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-crown text-green-500 mr-3">
+                        <path d="m14.2 2-2.2 4-2.2-4"/>
+                        <path d="M5 12s-4 4-4 8 7 1 7 1h12s1-5-4-8-4-4-4-8-4 4-4 8-4-4-4-8-4 4-4 8-4 4-4 8z"/>
+                    </svg>
+                    <span class="font-medium">Royalty system for leaders</span>
+                </li>
+                <li class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scale text-green-500 mr-3">
+                        <path d="m16 16.5 3.5-2L22 16.5"/>
+                        <path d="m2 16.5 3.5-2L9 16.5"/>
+                        <path d="M12 3v18"/>
+                        <path d="M3 7h18"/>
+                        <path d="M18 10c-1.7-.6-3.7-.6-5.5 0-1.9.6-3.6.6-5.5 0"/>
+                    </svg>
+                    <span class="font-medium">Transparent, scalable, and community-focused</span>
+                </li>
+                <li class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe text-green-500 mr-3">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                        <path d="M2 12h20"/>
+                    </svg>
+                    <span class="font-medium">Global opportunity for everyone</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Example Income Scenario Section -->
+        <section class="card mt-8">
+            <h2 class="section-title">📌 Example Income Scenario</h2>
+            <p class="text-lg text-gray-700 leading-relaxed mb-6 text-center">
+                Let's see how this can work for you:
+            </p>
+            <div class="bg-blue-50 p-6 rounded-xl border border-blue-200 shadow-md">
+                <p class="text-xl font-semibold text-blue-800 mb-4">
+                    If you refer <span class="highlight-value">10 people directly</span>:
+                </p>
+                <ul class="list-none pl-0 space-y-3 text-lg text-gray-700">
+                    <li class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dollar-sign text-green-600 mr-3">
+                            <line x1="12" x2="12" y1="2" y2="22"/>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                        You earn <span class="font-bold text-green-600">10 × $2 = $20</span> direct income
+                    </li>
+                    <li class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layers text-purple-600 mr-3">
+                            <path d="m12.83 2.18-.32.96a4 4 0 0 0-1.75 4.05 4 4 0 0 0 4.05-1.75l.96-.32a.5.5 0 0 0 .28-.84l-1.94-2a.5.5 0 0 0-.84.28Z"/>
+                            <path d="m19.31 9.32-.32.96a4 4 0 0 0-1.75 4.05 4 4 0 0 0 4.05-1.75l.96-.32a.5.5 0 0 0 .28-.84l-1.94-2a.5.5 0 0 0-.84.28Z"/>
+                            <path d="m5.18 19.31-.32.96a4 4 0 0 0-1.75 4.05 4 4 0 0 0 4.05-1.75l.96-.32a.5.5 0 0 0 .28-.84l-1.94-2a.5.5 0 0 0-.84.28Z"/>
+                            <path d="m12.83 19.82-.32.96a4 4 0 0 0-1.75 4.05 4 4 0 0 0 4.05-1.75l.96-.32a.5.5 0 0 0 .28-.84l-1.94-2a.5.5 0 0 0-.84.28Z"/>
+                            <path d="m2.18 12.83-.32.96a4 4 0 0 0-1.75 4.05 4 4 0 0 0 4.05-1.75l.96-.32a.5.5 0 0 0 .28-.84l-1.94-2a.5.5 0 0 0-.84.28Z"/>
+                            <path d="m19.82 5.18-.32.96a4 4 0 0 0-1.75 4.05 4 4 0 0 0 4.05-1.75l.96-.32a.5.5 0 0 0 .28-.84l-1.94-2a.5.5 0 0 0-.84.28Z"/>
+                        </svg>
+                        You unlock 10 levels of income
+                    </li>
+                    <li class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-growth text-indigo-600 mr-3">
+                            <path d="M4.35 12c.16 0 .32.01.48.02A1.9 1.9 0 0 1 7.2 14a1.9 1.9 0 0 1-1.37 3.32c-.16-.01-.32-.02-.48-.02h-.5a2.5 2.5 0 0 0 0 5h.5c.16 0 .32-.01.48-.02A1.9 1.9 0 0 1 7.2 19a1.9 1.9 0 0 1-1.37-3.32"/>
+                            <path d="M12 21V3"/>
+                            <path d="M16 8c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5Z"/>
+                        </svg>
+                        As your team duplicates and grows, you earn from each new member
+                    </li>
+                    <li class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-2 text-blue-600 mr-3">
+                            <path d="M14 19a6 6 0 0 0-12 0"/>
+                            <circle cx="8" cy="10" r="4"/>
+                            <path d="M22 19a6 6 0 0 0-12 0"/>
+                            <circle cx="16" cy="10" r="4"/>
+                        </svg>
+                        Reach <span class="highlight-value">100 total members (any depth)</span> → All 15 levels unlocked
+                    </li>
+                    <li class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-crown text-yellow-600 mr-3">
+                            <path d="m14.2 2-2.2 4-2.2-4"/>
+                            <path d="M5 12s-4 4-4 8 7 1 7 1h12s1-5-4-8-4-4-4-8-4 4-4 8-4-4-4-8-4 4-4 8-4 4-4 8z"/>
+                        </svg>
+                        Reach <span class="highlight-value">10,000 team size</span> → Become eligible for royalty
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Ready to Get Started? Section -->
+        <section id="get-started-section" class="card mt-8 text-center p-8 bg-gradient-to-r from-blue-700 to-teal-600 text-white">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">💬 Ready to Get Started?</h2>
+            <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-3xl mx-auto">
+                Join ETB today with just $20 and build your digital income empire — for life.
+            </p>
+            <a href="#" class="btn-secondary bg-white text-blue-700 border-white hover:bg-blue-800 hover:text-white">Join ETB Now!</a>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-10 rounded-t-lg">
+        <div class="container mx-auto text-center px-4">
+            <p class="mb-4">&copy; 2023 ETB – Empower The Base. All rights reserved.</p>
+            <div class="flex justify-center space-x-4 text-sm">
+                <a href="#" class="hover:text-indigo-400 transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-indigo-400 transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lucide Icons CDN (Moved to end of body for correct loading) -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide-static@latest/dist/umd/lucide.js"></script>
+    <script>
+        // Initialize Lucide Icons after the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+
+            // Mobile menu toggle logic
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when a link inside it is clicked
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // Navbar sticky/fixed on scroll logic
+            const navbar = document.getElementById('navbar');
+            const heroSection = document.getElementById('hero');
+
+            // Add an initial check in case the page is already scrolled down on load
+            if (window.scrollY > heroSection.offsetHeight / 2) {
+                navbar.classList.add('navbar-fixed');
+            }
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > heroSection.offsetHeight / 2) { // When scrolled past half of hero section
+                    navbar.classList.add('navbar-fixed');
+                } else {
+                    navbar.classList.remove('navbar-fixed');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
