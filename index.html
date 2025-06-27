@@ -3,719 +3,1107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ETB - Empower The Base | Digital Earning Platform</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Poppins for headings, Inter for body text -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>ETB - Empowerment Through Business & Training</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <style>
-        /* Base styles for body and headings */
+        :root {
+            --primary: #0056b3;
+            --secondary: #00a8e8;
+            --accent: #ff6b00;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: 'Inter', sans-serif;
-            color: #2d3748; /* Dark text for better readability */
-            background: linear-gradient(to right bottom, #edf2f7, #e2e8f0); /* Soft gradient background */
-            line-height: 1.6;
-            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
-            overflow-x: hidden; /* Prevent horizontal scroll */
-        }
-        h1, h2, h3, h4, h5, h6 {
             font-family: 'Poppins', sans-serif;
-            color: #1e3a8a; /* Deeper blue for titles */
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
         }
-
-        /* Reusable button styles */
-        .btn-primary {
-            @apply bg-gradient-to-r from-indigo-600 to-purple-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-all duration-300 ease-in-out hover:from-indigo-700 hover:to-purple-800 hover:scale-105;
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        .btn-secondary {
-            @apply bg-transparent text-indigo-700 border-2 border-indigo-700 font-semibold py-3 px-8 rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-indigo-700 hover:text-white hover:scale-105;
+        
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
         }
-
-        /* Card container for sections */
-        .card {
-            @apply bg-white p-6 md:p-8 rounded-2xl shadow-xl transition-transform duration-300 hover:scale-[1.005] border border-gray-200;
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-
-        /* Section titles with underline effect */
-        .section-title {
-            font-size: 2.5rem; /* Larger titles */
-            font-weight: 700;
-            margin-bottom: 2rem;
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            margin-left: 10px;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover, 
+        nav ul li a.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 86, 179, 0.85), rgba(0, 86, 179, 0.85)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 6rem 0;
             text-align: center;
-            position: relative;
-            padding-bottom: 0.75rem;
-            color: #1e3a8a; /* Consistent title color */
         }
-        .section-title::after {
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .quote {
+            font-style: italic;
+            font-size: 1.4rem;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background: #e55a00;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title h2::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px; /* Shorter underline */
+            width: 80px;
             height: 4px;
-            background-color: #6366f1; /* Accent color for underline */
+            background: var(--accent);
             border-radius: 2px;
         }
-
-        /* Subtitle styling for income sections */
-        .subtitle {
-            font-family: 'Poppins', sans-serif;
-            color: #2c5282; /* Slightly lighter blue for subtitles */
-            font-weight: 600;
-            font-size: 1.75rem; /* Adjusted subtitle size */
-            margin-bottom: 1rem;
-            display: flex;
+        
+        .section-content {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
             align-items: center;
         }
-        .subtitle svg {
-            margin-right: 0.75rem;
-            color: #4c51bf; /* Icon color */
+        
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
         }
-
-        /* Highlighted text colors */
-        .highlight-text {
-            color: #059669; /* Green for positive values */
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Facilities */
+        .facilities-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .facility-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .facility-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .facility-icon {
+            background: var(--primary);
+            color: white;
+            font-size: 2.5rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .facility-content {
+            padding: 1.5rem;
+        }
+        
+        .facility-content h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        /* Business Plan */
+        .plan-container {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .plan-price {
+            font-size: 3.5rem;
             font-weight: 700;
+            color: var(--accent);
+            margin: 1rem 0;
         }
-        .highlight-value {
-            color: #ef4444; /* Red for important figures */
+        
+        .plan-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .plan-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .plan-features li i {
+            color: var(--accent);
+            margin-right: 10px;
+        }
+        
+        /* Income Structure */
+        .income-structure {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .income-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .income-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .income-card i {
+            font-size: 3rem;
+            color: var(--success);
+            margin-bottom: 1.5rem;
+        }
+        
+        .income-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .income-card .bonus {
+            font-size: 2rem;
             font-weight: 700;
+            color: var(--accent);
+            margin: 1rem 0;
         }
-
-        /* Table styling */
-        .table-header {
-            background-color: #3f51b5; /* Deeper blue for table headers */
-            color: #ffffff;
+        
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        
+        th {
+            background: var(--primary);
+            color: white;
             font-weight: 600;
         }
-        .table-row-even {
-            background-color: #e8eaf6; /* Light purple-blue for even rows */
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
         }
-        .table-row-odd {
-            background-color: #f0f4f8; /* Very light grey-blue for odd rows */
+        
+        tr:hover {
+            background-color: #e9f7fe;
         }
-        .table-row-even:hover, .table-row-odd:hover {
-            background-color: #d1d5db; /* Hover effect for table rows */
+        
+        /* Example Scenario */
+        .scenario {
+            background: linear-gradient(135deg, #f9f9f9, #eef7ff);
+            padding: 3rem;
+            border-radius: 10px;
+            border-left: 5px solid var(--accent);
         }
-
-        /* Sticky Navbar */
-        .navbar-fixed {
-            position: fixed;
-            top: 0;
+        
+        .scenario h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .scenario-highlight {
+            background: var(--accent);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        /* Call to Action */
+        .cta {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 5rem 0;
+        }
+        
+        .cta h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.2rem;
+        }
+        
+        .btn-light {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .btn-light:hover {
+            background: #f0f0f0;
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
             left: 0;
-            width: 100%;
-            z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
         }
-        /* Mobile menu styling */
-        #mobile-menu.hidden {
-            display: none;
+        
+        .social-links {
+            display: flex;
+            margin-top: 1.5rem;
         }
-        @media (min-width: 768px) {
-            #mobile-menu {
-                display: flex !important; /* Always show on desktop */
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            display: flex;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info li i {
+            color: var(--accent);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                margin-top: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 1rem;
+                border-radius: 0;
+            }
+            
+            .hero {
+                padding: 4rem 0;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .plan-container {
+                padding: 2rem;
+            }
+            
+            .cta h2 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .quote {
+                font-size: 1.2rem;
+            }
+            
+            .section-content {
+                padding: 1.5rem;
             }
         }
     </style>
 </head>
-<body class="p-4 sm:p-6 md:p-8">
-
-    <!-- Navbar -->
-    <nav id="navbar" class="py-4 px-6 md:px-8 transition-all duration-300 rounded-lg">
-        <div class="container mx-auto flex justify-between items-center">
-            <!-- Logo -->
-            <a href="#hero" class="text-3xl font-bold text-indigo-700 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap mr-2 text-purple-600">
-                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-                </svg>
-                ETB
-            </a>
-
-            <!-- Mobile Menu Button (Hamburger) -->
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-indigo-700 focus:outline-none">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
-                        <line x1="4" x2="20" y1="12" y2="12"/>
-                        <line x1="4" x2="20" y1="6" y2="6"/>
-                        <line x1="4" x2="20" y1="18" y2="18"/>
-                    </svg>
-                </button>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap logo-icon"></i>
+                <h1>ETB</h1>
             </div>
-
-            <!-- Desktop Menu -->
-            <ul class="hidden md:flex space-x-8 text-lg font-medium">
-                <li><a href="#home-section" class="text-gray-600 hover:text-indigo-700 transition-colors">Home</a></li>
-                <li><a href="#about-section" class="text-gray-600 hover:text-indigo-700 transition-colors">About Us</a></li>
-                <li><a href="#business-plan-section" class="text-gray-600 hover:text-indigo-700 transition-colors">Business Plan</a></li>
-                <li><a href="#why-etb-section" class="text-gray-600 hover:text-indigo-700 transition-colors">Why ETB?</a></li>
-                <li><a href="#get-started-section" class="text-gray-600 hover:text-indigo-700 transition-colors">Get Started</a></li>
-            </ul>
-        </div>
-
-        <!-- Mobile Menu (Hidden by default) -->
-        <div id="mobile-menu" class="md:hidden mt-4 hidden bg-white rounded-lg shadow-md">
-            <ul class="flex flex-col space-y-2 text-lg font-medium px-4 py-2">
-                <li><a href="#home-section" class="block text-gray-700 hover:text-indigo-700 py-2">Home</a></li>
-                <li><a href="#about-section" class="block text-gray-700 hover:text-indigo-700 py-2">About Us</a></li>
-                <li><a href="#business-plan-section" class="block text-gray-700 hover:text-indigo-700 py-2">Business Plan</a></li>
-                <li><a href="#why-etb-section" class="block text-gray-700 hover:text-indigo-700 py-2">Why ETB?</a></li>
-                <li><a href="#get-started-section" class="block text-gray-700 hover:text-indigo-700 py-2">Get Started</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="max-w-4xl mx-auto">
-        <!-- Hero Section -->
-        <section id="hero" class="text-center mb-10 p-6 bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-3xl shadow-xl">
-            <h1 class="text-5xl md:text-6xl font-extrabold mb-4 font-poppins">ETB – Empower The Base ✨</h1>
-            <p class="text-xl md:text-2xl leading-relaxed mb-6">
-                Welcome to ETB, a powerful digital platform built to empower individuals through affordable entry and long-term income potential. With just a one-time $20 entry, ETB opens the door to a lifetime of passive income through a structured, community-driven model.
-            </p>
-            <div class="inline-block bg-white text-indigo-700 px-6 py-3 rounded-full shadow-lg text-2xl font-semibold">
-                <span class="inline-flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-package mr-2">
-                        <path d="m7.5 4.27 9 5.15" />
-                        <path d="m7.5 19.73 9-5.15" />
-                        <path d="M3.35 12.61 12 17.77l8.65-5.16" />
-                        <path d="M12 2.23 3.35 7.39 12 12.55l8.65-5.16Z" />
-                        <path d="m12 17.77 8.65 5.16" />
-                        <path d="m12 17.77-8.65 5.16" />
-                    </svg>
-                    One-Time Entry: Just $20
-                </span>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
             </div>
-        </section>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#mission">Mission</a></li>
+                    <li><a href="#vision">Vision</a></li>
+                    <li><a href="#facilities">Facilities</a></li>
+                    <li><a href="#business-plan">Business Plan</a></li>
+                    <li><a href="#get-started" class="btn">Join Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-        <!-- Home Section -->
-        <section id="home-section" class="card">
-            <h2 class="section-title">🏠 Home</h2>
-            <p class="text-lg text-gray-700 leading-relaxed mb-4 text-center">
-                <span class="font-bold text-blue-800 text-2xl">💡 Start Your Digital Earning Journey with Just $20</span>
-            </p>
-            <p class="text-lg text-gray-700 leading-relaxed text-center">
-                ETB is designed for the people. Whether you're a student, a freelancer, or a full-time worker looking for side income — ETB gives you a reliable, transparent, and scalable income model.
-                <br>One small step today can lead to a lifetime of earnings.
-            </p>
-        </section>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h2>Empowerment Through Business & Training</h2>
+            <p>Where learning and earning go side by side. Our platform is designed to uplift students, job seekers, and aspiring entrepreneurs by providing real-world skills and a powerful income system.</p>
+            
+            <div class="quote">
+                "Give us your time and effort, we will give you financial freedom."
+            </div>
+            
+            <a href="#get-started" class="btn">Start Your Journey</a>
+        </div>
+    </section>
 
-        <!-- About Us Section -->
-        <section id="about-section" class="card mt-8">
-            <h2 class="section-title">👥 About Us</h2>
-            <p class="text-lg text-gray-700 leading-relaxed text-center">
-                ETB (Empower The Base) is built by a team of experienced developers, marketers, and financial strategists who believe in fair income distribution and digital empowerment. We aim to provide a simple yet powerful system for people to earn, grow, and lead in the digital economy.
-            </p>
-
-            <!-- Our Mission -->
-            <h3 class="subtitle mt-8 mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target">
-                    <circle cx="12" cy="12" r="10"/>
-                    <circle cx="12" cy="12" r="6"/>
-                    <circle cx="12" cy="12" r="2"/>
-                </svg>
-                Our Mission
-            </h3>
-            <ul class="list-none pl-0 space-y-3 text-lg text-gray-700">
-                <li class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle text-green-500 mr-2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                        <path d="m9 11 2 2 4-4"/>
-                    </svg>
-                    To make digital income simple and accessible
-                </li>
-                <li class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle text-green-500 mr-2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                        <path d="m9 11 2 2 4-4"/>
-                    </svg>
-                    To help individuals achieve financial freedom
-                </li>
-                <li class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle text-green-500 mr-2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                        <path d="m9 11 2 2 4-4"/>
-                    </svg>
-                    To provide a transparent and scalable earning platform for everyone
-                </li>
-            </ul>
-
-            <!-- Our Vision -->
-            <h3 class="subtitle mt-8 mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye">
-                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
-                    <circle cx="12" cy="12" r="3"/>
-                </svg>
-                Our Vision
-            </h3>
-            <p class="text-lg text-gray-700 leading-relaxed text-center">
-                We envision a global community of financially independent individuals who grow together through the power of networks and ethical digital income streams.
-            </p>
-        </section>
-
-        <!-- Business Plan Overview Section -->
-        <section id="business-plan-section" class="card mt-8">
-            <h2 class="section-title">📊 Business Plan Overview</h2>
-
-            <!-- Income Structure -->
-            <div class="mb-8 p-6 bg-blue-50 rounded-xl border border-blue-200">
-                <h3 class="subtitle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dollar-sign">
-                        <line x1="12" x2="12" y1="2" y2="22"/>
-                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                    </svg>
-                    Income Structure
-                </h3>
-
-                <div class="mb-6">
-                    <h4 class="text-xl font-semibold text-gray-800 mb-2 flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-circle text-green-500 mr-2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M8 12h8"/>
-                            <path d="m12 16 4-4-4-4"/>
-                        </svg>
-                        1. Direct Referral Bonus – 10%
-                    </h4>
-                    <p class="text-lg text-gray-700 leading-relaxed">
-                        For every direct referral, you earn <span class="highlight-text">$2 instantly</span> (10% of $20).
-                    </p>
-                    <p class="text-lg text-gray-700 leading-relaxed mt-2">
-                        <span class="font-bold text-blue-600">💡 Example:</span> Refer 10 people → 10 × $2 = <span class="highlight-text">$20</span> direct income.
-                    </p>
-                </div>
-
-                <div>
-                    <h4 class="text-xl font-semibold text-gray-800 mb-2 flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layers text-purple-500 mr-2">
-                            <path d="m12.83 2.18-.32.96a4 4 0 0 0-1.75 4.05 4 4 0 0 0 4.05-1.75l.96-.32a.5.5 0 0 0 .28-.84l-1.94-2a.5.5 0 0 0-.84.28Z"/>
-                            <path d="m19.31 9.32-.32.96a4 4 0 0 0-1.75 4.05 4 4 0 0 0 4.05-1.75l.96-.32a.5.5 0 0 0 .28-.84l-1.94-2a.5.5 0 0 0-.84.28Z"/>
-                            <path d="m5.18 19.31-.32.96a4 4 0 0 0-1.75 4.05 4 4 0 0 0 4.05-1.75l.96-.32a.5.5 0 0 0 .28-.84l-1.94-2a.5.5 0 0 0-.84.28Z"/>
-                            <path d="m12.83 19.82-.32.96a4 4 0 0 0-1.75 4.05 4 4 0 0 0 4.05-1.75l.96-.32a.5.5 0 0 0 .28-.84l-1.94-2a.5.5 0 0 0-.84.28Z"/>
-                            <path d="m2.18 12.83-.32.96a4 4 0 0 0-1.75 4.05 4 4 0 0 0 4.05-1.75l.96-.32a.5.5 0 0 0 .28-.84l-1.94-2a.5.5 0 0 0-.84.28Z"/>
-                            <path d="m19.82 5.18-.32.96a4 4 0 0 0-1.75 4.05 4 4 0 0 0 4.05-1.75l.96-.32a.5.5 0 0 0 .28-.84l-1.94-2a.5.5 0 0 0-.84.28Z"/>
-                        </svg>
-                        2. Team Level Income – 15 Levels Deep
-                    </h4>
-                    <p class="text-lg text-gray-700 leading-relaxed mb-4">
-                        Earn <span class="highlight-text">5% income from each member on every level</span>, up to 15 levels deep. This allows you to earn even from people you didn't directly refer.
-                    </p>
-                    <div class="overflow-x-auto rounded-lg shadow-md border border-gray-200">
-                        <table class="min-w-full text-left text-base whitespace-nowrap">
-                            <thead class="table-header">
-                                <tr>
-                                    <th scope="col" class="px-6 py-3">Level</th>
-                                    <th scope="col" class="px-6 py-3">Bonus %</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="table-row-even">
-                                    <td class="px-6 py-4">1–15</td>
-                                    <td class="px-6 py-4">5% each</td>
-                                </tr>
-                            </tbody>
-                        </table>
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+            </div>
+            <div class="section-content">
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h3>ETB (Empowerment by Training & Business)</h3>
+                        <p>An initiative to support individuals in unlocking their personal and financial potential. We blend skill-building, motivation, and business mentorship into one powerful ecosystem.</p>
+                        <p>We believe in transforming lives through <strong>education, empowerment, and entrepreneurship</strong>.</p>
+                        <p>Our platform is designed for:</p>
+                        <ul>
+                            <li>Students looking to improve skills</li>
+                            <li>Young professionals seeking employment</li>
+                            <li>Aspiring entrepreneurs aiming for financial independence</li>
+                        </ul>
                     </div>
-                    <p class="text-lg text-gray-700 leading-relaxed mt-4">
-                        <span class="font-bold text-blue-600">💡 This structure rewards both your effort and your team’s growth.</span>
-                    </p>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="ETB Team">
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Level Unlocking Criteria -->
-            <div class="p-6 bg-purple-50 rounded-xl border border-purple-200 mt-8">
-                <h3 class="subtitle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock-open">
-                        <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
-                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                    </svg>
-                    Level Unlocking Criteria
-                </h3>
-                <p class="text-lg text-gray-700 leading-relaxed mb-6 text-center">
-                    Income from each level unlocks based on how many people you directly refer:
-                </p>
-                <div class="overflow-x-auto rounded-lg shadow-md border border-gray-200">
-                    <table class="min-w-full text-left text-base whitespace-nowrap">
-                        <thead class="table-header">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">Direct Referrals</th>
-                                <th scope="col" class="px-6 py-3">Levels Unlocked</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="table-row-even">
-                                <td class="px-6 py-4">2</td>
-                                <td class="px-6 py-4">Level 4</td>
-                            </tr>
-                            <tr class="table-row-odd">
-                                <td class="px-6 py-4">5</td>
-                                <td class="px-6 py-4">Level 5</td>
-                            </tr>
-                            <tr class="table-row-even">
-                                <td class="px-6 py-4">6</td>
-                                <td class="px-6 py-4">Level 6</td>
-                            </tr>
-                            <!-- Loop for levels 7 to 15 -->
-                            <script>
-                                for (let i = 7; i <= 15; i++) {
-                                    document.write(`<tr class="${i % 2 === 0 ? 'table-row-even' : 'table-row-odd'}">`);
-                                    document.write(`<td class="px-6 py-4">${i}</td>`);
-                                    document.write(`<td class="px-6 py-4">Level ${i}</td>`);
-                                    document.write(`</tr>`);
-                                }
-                            </script>
-                        </tbody>
+    <!-- Mission & Vision -->
+    <section id="mission">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Mission & Vision</h2>
+            </div>
+            <div class="section-content">
+                <div class="about-grid">
+                    <div class="mission-card">
+                        <h3><i class="fas fa-bullseye"></i> Mission</h3>
+                        <p>To empower youth and individuals with the tools, knowledge, and support needed to build strong, self-sustaining careers and financial freedom.</p>
+                    </div>
+                    <div class="vision-card">
+                        <h3><i class="fas fa-eye"></i> Vision</h3>
+                        <p>We envision a world where every capable individual gets the training, guidance, and opportunity to build a lifetime of success — regardless of background or financial status.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities -->
+    <section id="facilities">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Facilities</h2>
+            </div>
+            <div class="facilities-container">
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="facility-content">
+                        <h3>Skill Development</h3>
+                        <p>Skill development in students to crack exams and enhance career prospects.</p>
+                    </div>
+                </div>
+                
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="facility-content">
+                        <h3>Personality Development</h3>
+                        <p>Personality development & motivation programs for personal growth.</p>
+                    </div>
+                </div>
+                
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="facility-content">
+                        <h3>Employment Assistance</h3>
+                        <p>Employment assistance to unemployed youth with job placement support.</p>
+                    </div>
+                </div>
+                
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="facility-content">
+                        <h3>Business Opportunities</h3>
+                        <p>Opportunity to earn capital for lifetime business with innovative ideas.</p>
+                    </div>
+                </div>
+                
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <div class="facility-content">
+                        <h3>Business Assistance</h3>
+                        <p>Business assistance to build your lifetime career with expert guidance.</p>
+                    </div>
+                </div>
+                
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="facility-content">
+                        <h3>Training Programs</h3>
+                        <p>Ideas of business and training programs tailored to individual needs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Plan -->
+    <section id="business-plan">
+        <div class="container">
+            <div class="section-title">
+                <h2>ETB Business Plan</h2>
+            </div>
+            <div class="plan-container">
+                <h3>Affordable Entry Package</h3>
+                <div class="plan-price">$20 Only</div>
+                <p>A simple and affordable entry that allows everyone to start. For just $20, you unlock a lifetime earning system combined with practical training and mentorship.</p>
+                
+                <ul class="plan-features">
+                    <li><i class="fas fa-check-circle"></i> Lifetime access to training materials</li>
+                    <li><i class="fas fa-check-circle"></i> Business mentorship program</li>
+                    <li><i class="fas fa-check-circle"></i> Access to ETB community</li>
+                    <li><i class="fas fa-check-circle"></i> Income generation opportunities</li>
+                    <li><i class="fas fa-check-circle"></i> Personal development resources</li>
+                </ul>
+                
+                <a href="#get-started" class="btn">Get Started Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Income Structure -->
+    <section id="income-structure">
+        <div class="container">
+            <div class="section-title">
+                <h2>Income Structure</h2>
+            </div>
+            
+            <div class="income-structure">
+                <div class="income-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Direct Referral Bonus</h3>
+                    <div class="bonus">10%</div>
+                    <p>Get <strong>$2 instantly</strong> for every direct referral you make. This is the fastest way to start earning with ETB.</p>
+                </div>
+                
+                <div class="income-card">
+                    <i class="fas fa-sitemap"></i>
+                    <h3>Level Income</h3>
+                    <div class="bonus">15 Levels</div>
+                    <p>Earn <strong>5% bonus</strong> on each level up to 15 levels deep. This creates a powerful residual income stream.</p>
+                </div>
+            </div>
+            
+            <div class="section-content" style="margin-top: 3rem;">
+                <h3 style="text-align: center; margin-bottom: 1.5rem;">Level Unlocking Criteria</h3>
+                <div class="table-container">
+                    <table>
+                        <tr>
+                            <th>Direct Referrals</th>
+                            <th>Levels Unlocked</th>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>4 Levels</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>5 Levels</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>6 Levels</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>7 Levels</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>8 Levels</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>9 Levels</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>10 Levels</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>11 Levels</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>12 Levels</td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td>13 Levels</td>
+                        </tr>
+                        <tr>
+                            <td>14</td>
+                            <td>14 Levels</td>
+                        </tr>
+                        <tr>
+                            <td>15</td>
+                            <td>15 Levels</td>
+                        </tr>
                     </table>
                 </div>
-                <p class="text-lg text-gray-700 mt-6 text-center bg-blue-100 p-4 rounded-xl shadow-inner">
-                    <span class="highlight-text">✅ Team of 100 Members (any depth):</span> If you build a team of 100 members, all 15 levels unlock automatically — regardless of how many people you personally referred.
-                </p>
+                <p style="text-align: center; margin-top: 1rem;"><strong>Bonus:</strong> Full 15 levels auto-unlock when your team size reaches 100 (any depth)</p>
             </div>
+        </div>
+    </section>
 
-            <!-- Income Distribution Breakdown -->
-            <div class="p-6 bg-yellow-50 rounded-xl border border-yellow-200 mt-8">
-                <h3 class="subtitle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bar-chart-2">
-                        <line x1="18" x2="18" y1="20" y2="10"/>
-                        <line x1="12" x2="12" y1="20" y2="4"/>
-                        <line x1="6" x2="6" y1="20" y2="14"/>
-                    </svg>
-                    Income Distribution <span class="text-gray-600">(from Each $20 Package)</span>
-                </h3>
-                <p class="text-lg text-gray-700 leading-relaxed mb-6 text-center">
-                    Understand how your investment is distributed:
-                </p>
-                <div class="overflow-x-auto rounded-lg shadow-md border border-gray-200">
-                    <table class="min-w-full text-left text-base whitespace-nowrap">
-                        <thead class="table-header">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">Component</th>
-                                <th scope="col" class="px-6 py-3">Amount ($)</th>
-                                <th scope="col" class="px-6 py-3">Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="table-row-even">
-                                <td class="px-6 py-4">Direct Referral Bonus</td>
-                                <td class="px-6 py-4 highlight-text">$2.00</td>
-                                <td class="px-6 py-4">Instantly paid to the referrer</td>
-                            </tr>
-                            <tr class="table-row-odd">
-                                <td class="px-6 py-4">Level Income</td>
-                                <td class="px-6 py-4 highlight-text">$15.00</td>
-                                <td class="px-6 py-4">Distributed across 15 levels</td>
-                            </tr>
-                            <tr class="table-row-even">
-                                <td class="px-6 py-4">Creator Share</td>
-                                <td class="px-6 py-4 highlight-text">$2.00</td>
-                                <td class="px-6 py-4">Platform management and maintenance</td>
-                            </tr>
-                            <tr class="table-row-odd">
-                                <td class="px-6 py-4">Dev & Promotion Bonus</td>
-                                <td class="px-6 py-4 highlight-text">$1.00</td>
-                                <td class="px-6 py-4">Used for platform growth and rewards</td>
-                            </tr>
-                        </tbody>
+    <!-- Income Breakdown -->
+    <section id="income-breakdown">
+        <div class="container">
+            <div class="section-title">
+                <h2>Income Distribution</h2>
+            </div>
+            <div class="section-content">
+                <h3 style="text-align: center; margin-bottom: 1.5rem;">From Each $20 Package</h3>
+                <div class="table-container">
+                    <table>
+                        <tr>
+                            <th>Component</th>
+                            <th>Amount ($)</th>
+                            <th>Percentage</th>
+                        </tr>
+                        <tr>
+                            <td>Direct Referral Bonus</td>
+                            <td>$2.00</td>
+                            <td>10%</td>
+                        </tr>
+                        <tr>
+                            <td>Level Bonus (15 levels)</td>
+                            <td>$15.00</td>
+                            <td>75%</td>
+                        </tr>
+                        <tr>
+                            <td>Creator Bonus</td>
+                            <td>$2.00</td>
+                            <td>10%</td>
+                        </tr>
+                        <tr>
+                            <td>Development & Promotion</td>
+                            <td>$1.00</td>
+                            <td>5%</td>
+                        </tr>
                     </table>
                 </div>
+                
+                <div style="margin-top: 3rem;">
+                    <h3>Development & Promotion Bonus (5% Breakdown)</h3>
+                    <ul style="margin-top: 1rem;">
+                        <li><strong>2.5% – Active Promoters:</strong> Given to contributors & performers who help grow the platform.</li>
+                        <li><strong>1.25% – Teams with 1,000+ Members:</strong> Shared equally among leaders with ≥1,000 team size.</li>
+                        <li><strong>1.25% – Teams with 5,000+ Members:</strong> Shared equally among top leaders with ≥5,000 team size.</li>
+                    </ul>
+                </div>
+                
+                <div style="margin-top: 2rem; background: #e9f7ff; padding: 1.5rem; border-radius: 8px;">
+                    <h3>Royalty Bonus</h3>
+                    <p>Leaders with <strong>10,000+ team members</strong> are eligible for <strong>50% of missed income pool</strong>. Distributed <strong>monthly or quarterly</strong> as per activity and growth.</p>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Development & Promotion Bonus -->
-            <div class="p-6 bg-red-50 rounded-xl border border-red-200 mt-8">
-                <h3 class="subtitle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rocket">
-                        <path d="M4.5 16.5c-1.5 1.5-2.5 3-2.5 3s.5-1 2-2.5c1.5-1.5 3-2.5 3-2.5s-1 0-2.5 1.5c-1.5 1.5-3 2.5-3 2.5Z"/>
-                        <path d="M12 21.5c-1.5 1.5-2.5 3-2.5 3s.5-1 2-2.5c1.5-1.5 3-2.5 3-2.5s-1 0-2.5 1.5c-1.5 1.5-3 2.5-3 2.5Z"/>
-                        <path d="M19.5 16.5c-1.5 1.5-2.5 3-2.5 3s.5-1 2-2.5c1.5-1.5 3-2.5 3-2.5s-1 0-2.5 1.5c-1.5 1.5-3 2.5-3 2.5Z"/>
-                        <path d="M7.5 12.5c-1.5 1.5-2.5 3-2.5 3s.5-1 2-2.5c1.5-1.5 3-2.5 3-2.5s-1 0-2.5 1.5c-1.5 1.5-3 2.5-3 2.5Z"/>
-                        <path d="M12 7.5c-1.5 1.5-2.5 3-2.5 3s.5-1 2-2.5c1.5-1.5 3-2.5 3-2.5s-1 0-2.5 1.5c-1.5 1.5-3 2.5-3 2.5Z"/>
-                        <path d="M16.5 12.5c-1.5 1.5-2.5 3-2.5 3s.5-1 2-2.5c1.5-1.5 3-2.5 3-2.5s-1 0-2.5 1.5c-1.5 1.5-3 2.5-3 2.5Z"/>
-                    </svg>
-                    Development & Promotion Bonus <span class="text-gray-600">(5%) Breakdown</span>
-                </h3>
-                <p class="text-lg text-gray-700 leading-relaxed mb-6 text-center">
-                    To support system growth and reward contributors:
-                </p>
-                <ul class="list-none pl-0 space-y-4 text-lg text-gray-700">
-                    <li class="flex items-start bg-emerald-50 p-4 rounded-xl border border-emerald-200 shadow-sm">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award text-emerald-600 mr-3 mt-1">
-                            <circle cx="12" cy="8" r="7"/>
-                            <polyline points="8.21 13.89 7 23 12 18 17 23 15.79 13.89"/>
-                        </svg>
-                        <div>
-                            <span class="font-bold text-emerald-700">2.5% – Active Promoters:</span> Given to members who help grow the platform through training, content, or outreach.
+    <!-- Highlights -->
+    <section id="highlights">
+        <div class="container">
+            <div class="section-title">
+                <h2>Key Highlights & Benefits</h2>
+            </div>
+            <div class="section-content">
+                <div class="facilities-container">
+                    <div class="facility-card">
+                        <div class="facility-icon" style="background: var(--accent);">
+                            <i class="fas fa-dollar-sign"></i>
                         </div>
-                    </li>
-                    <li class="flex items-start bg-orange-50 p-4 rounded-xl border border-orange-200 shadow-sm">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users text-orange-600 mr-3 mt-1">
-                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                        </svg>
-                        <div>
-                            <span class="font-bold text-orange-700">1.25% – Team Size ≥ 1,000:</span> Equally shared among qualifying members.
+                        <div class="facility-content">
+                            <h3>Low Entry Barrier</h3>
+                            <p>Only $20 to start your journey toward financial freedom.</p>
                         </div>
-                    </li>
-                    <li class="flex items-start bg-red-50 p-4 rounded-xl border border-red-200 shadow-sm">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check text-red-600 mr-3 mt-1">
-                            <path d="M20 13c0 5-6 9-8 9s-8-4-8-9V5l8-3 8 3z"/>
-                            <path d="m9 12 2 2 4-4"/>
-                        </svg>
-                        <div>
-                            <span class="font-bold text-red-700">1.25% – Team Size ≥ 5,000:</span> Shared among top-performing leaders.
+                    </div>
+                    
+                    <div class="facility-card">
+                        <div class="facility-icon" style="background: var(--accent);">
+                            <i class="fas fa-infinity"></i>
                         </div>
-                    </li>
+                        <div class="facility-content">
+                            <h3>Lifetime Earning</h3>
+                            <p>Build a sustainable income stream that lasts a lifetime.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="facility-card">
+                        <div class="facility-icon" style="background: var(--accent);">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <div class="facility-content">
+                            <h3>15-Level System</h3>
+                            <p>Deep compensation plan with 15 levels of income potential.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="facility-card">
+                        <div class="facility-icon" style="background: var(--accent);">
+                            <i class="fas fa-unlock"></i>
+                        </div>
+                        <div class="facility-content">
+                            <h3>Auto Unlock System</h3>
+                            <p>Automatic level unlocking as your team grows.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="facility-card">
+                        <div class="facility-icon" style="background: var(--accent);">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="facility-content">
+                            <h3>Leadership Royalty</h3>
+                            <p>Earn royalty bonuses as you reach leadership levels.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="facility-card">
+                        <div class="facility-icon" style="background: var(--accent);">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="facility-content">
+                            <h3>Transparent Structure</h3>
+                            <p>Clear and scalable compensation plan with no hidden fees.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Example Scenario -->
+    <section id="example">
+        <div class="container">
+            <div class="section-title">
+                <h2>Example Scenario</h2>
+            </div>
+            <div class="scenario">
+                <h3>Your Path to Success</h3>
+                <p>Let's say you refer <span class="scenario-highlight">10 people directly</span>:</p>
+                <ul style="margin: 1.5rem 0 1.5rem 2rem;">
+                    <li>You instantly earn: <strong>10 x $2 = $20</strong> (returning your initial investment)</li>
+                    <li>Your 10 direct referrals unlock <strong>10 levels of income</strong> potential</li>
+                    <li>As your team grows, you become eligible for <strong>royalty and leadership income</strong></li>
+                    <li>With consistent effort, you can build a substantial residual income stream</li>
                 </ul>
+                <p>This is just the beginning of what's possible with ETB. The more you help others succeed, the more your own success grows.</p>
             </div>
+        </div>
+    </section>
 
-            <!-- Royalty Bonus -->
-            <div class="p-6 bg-indigo-50 rounded-xl border border-indigo-200 mt-8">
-                <h3 class="subtitle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-crown">
-                        <path d="m14.2 2-2.2 4-2.2-4"/>
-                        <path d="M5 12s-4 4-4 8 7 1 7 1h12s1-5-4-8-4-4-4-8-4 4-4 8-4-4-4-8-4 4-4 8-4 4-4 8z"/>
-                    </svg>
-                    Royalty Bonus
-                </h3>
-                <p class="text-lg text-gray-800 leading-relaxed mb-4">
-                    Members with a team of <span class="highlight-value">10,000 or more</span> become eligible for <span class="highlight-text">50% of the Missed Payment Pool</span>.
-                </p>
-                <p class="text-lg text-gray-800 leading-relaxed">
-                    <span class="font-bold text-indigo-700">📅 Royalty will be distributed monthly or quarterly.</span>
-                </p>
-                <p class="text-lg text-gray-800 leading-relaxed mt-4">
-                    <span class="font-bold text-blue-600">💡 The Missed Payment Pool</span> consists of commissions that go unclaimed due to ineligibility or inactivity.
-                </p>
-            </div>
-        </section>
-
-        <!-- Why ETB? Section -->
-        <section id="why-etb-section" class="card mt-8">
-            <h2 class="section-title">🔑 Why ETB?</h2>
-            <ul class="list-none pl-0 space-y-3 text-lg text-gray-700">
-                <li class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check text-green-500 mr-3">
-                        <path d="M20 13c0 5-6 9-8 9s-8-4-8-9V5l8-3 8 3z"/>
-                        <path d="m9 12 2 2 4-4"/>
-                    </svg>
-                    <span class="font-medium">Low-risk, high-reward model</span>
-                </li>
-                <li class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dollar-sign text-red-500 mr-3">
-                        <line x1="12" x2="12" y1="2" y2="22"/>
-                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                    </svg>
-                    <span class="font-medium">No monthly fees</span>
-                </li>
-                <li class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-brain text-purple-500 mr-3">
-                        <path d="M9.5 22a2.5 2.5 0 0 1 0-5L12 15h2a2 2 0 0 1 2 2v2"/>
-                        <path d="M16 22a2.5 2.5 0 0 0 0-5L12 15l-1.45-1.45A6 6 0 0 0 5 6c0-3.3 2.7-6 6-6 .5 0 1 .07 1.5.21V10l4.5 4.5a2.5 2.5 0 0 1 0 5L12 22h-2.5z"/>
-                    </svg>
-                    <span class="font-medium">Simple logic, powerful earning</span>
-                </li>
-                <li class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe text-blue-500 mr-3">
-                        <circle cx="12" cy="12" r="10"/>
-                        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
-                        <path d="M2 12h20"/>
-                    </svg>
-                    <span class="font-medium">Global scalability</span>
-                </li>
-                <li class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap text-orange-500 mr-3">
-                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-                    </svg>
-                    <span class="font-medium">Instant payout system</span>
-                </li>
-                <li class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users text-green-500 mr-3">
-                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                        <circle cx="9" cy="7" r="4"/>
-                        <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                    </svg>
-                    <span class="font-medium">Built for community success</span>
-                </li>
-            </ul>
-        </section>
-
-        <!-- Highlights & Benefits Section -->
-        <section class="card mt-8">
-            <h2 class="section-title">🌟 Highlights & Benefits</h2>
-            <ul class="list-none pl-0 space-y-3 text-lg text-gray-700">
-                <li class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle text-green-500 mr-3">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                        <path d="m9 11 2 2 4-4"/>
-                    </svg>
-                    <span class="font-medium">One-time <span class="highlight-value">$20</span> entry</span>
-                </li>
-                <li class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-infinity text-green-500 mr-3">
-                        <path d="M12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8c0 1.5-.5 3-1.34 4.34m-2.86-1.57A8 8 0 0 0 12 4a8 8 0 0 0-8 8 8 8 0 0 0 8 8c1.5 0 3-.5 4.34-1.34"/>
-                        <path d="M17 12c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4Z"/>
-                        <line x1="2" x2="22" y1="12" y2="12"/>
-                    </svg>
-                    <span class="font-medium">Lifetime earning potential</span>
-                </li>
-                <li class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trending-up text-green-500 mr-3">
-                        <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
-                        <polyline points="16 7 22 7 22 13"/>
-                    </svg>
-                    <span class="font-medium">15-level deep passive income</span>
-                </li>
-                <li class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock-open text-green-500 mr-3">
-                        <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
-                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                    </svg>
-                    <span class="font-medium">Automatic level unlocking with team growth</span>
-                </li>
-                <li class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-crown text-green-500 mr-3">
-                        <path d="m14.2 2-2.2 4-2.2-4"/>
-                        <path d="M5 12s-4 4-4 8 7 1 7 1h12s1-5-4-8-4-4-4-8-4 4-4 8-4-4-4-8-4 4-4 8-4 4-4 8z"/>
-                    </svg>
-                    <span class="font-medium">Royalty system for leaders</span>
-                </li>
-                <li class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scale text-green-500 mr-3">
-                        <path d="m16 16.5 3.5-2L22 16.5"/>
-                        <path d="m2 16.5 3.5-2L9 16.5"/>
-                        <path d="M12 3v18"/>
-                        <path d="M3 7h18"/>
-                        <path d="M18 10c-1.7-.6-3.7-.6-5.5 0-1.9.6-3.6.6-5.5 0"/>
-                    </svg>
-                    <span class="font-medium">Transparent, scalable, and community-focused</span>
-                </li>
-                <li class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe text-green-500 mr-3">
-                        <circle cx="12" cy="12" r="10"/>
-                        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
-                        <path d="M2 12h20"/>
-                    </svg>
-                    <span class="font-medium">Global opportunity for everyone</span>
-                </li>
-            </ul>
-        </section>
-
-        <!-- Example Income Scenario Section -->
-        <section class="card mt-8">
-            <h2 class="section-title">📌 Example Income Scenario</h2>
-            <p class="text-lg text-gray-700 leading-relaxed mb-6 text-center">
-                Let's see how this can work for you:
-            </p>
-            <div class="bg-blue-50 p-6 rounded-xl border border-blue-200 shadow-md">
-                <p class="text-xl font-semibold text-blue-800 mb-4">
-                    If you refer <span class="highlight-value">10 people directly</span>:
-                </p>
-                <ul class="list-none pl-0 space-y-3 text-lg text-gray-700">
-                    <li class="flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dollar-sign text-green-600 mr-3">
-                            <line x1="12" x2="12" y1="2" y2="22"/>
-                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                        </svg>
-                        You earn <span class="font-bold text-green-600">10 × $2 = $20</span> direct income
-                    </li>
-                    <li class="flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layers text-purple-600 mr-3">
-                            <path d="m12.83 2.18-.32.96a4 4 0 0 0-1.75 4.05 4 4 0 0 0 4.05-1.75l.96-.32a.5.5 0 0 0 .28-.84l-1.94-2a.5.5 0 0 0-.84.28Z"/>
-                            <path d="m19.31 9.32-.32.96a4 4 0 0 0-1.75 4.05 4 4 0 0 0 4.05-1.75l.96-.32a.5.5 0 0 0 .28-.84l-1.94-2a.5.5 0 0 0-.84.28Z"/>
-                            <path d="m5.18 19.31-.32.96a4 4 0 0 0-1.75 4.05 4 4 0 0 0 4.05-1.75l.96-.32a.5.5 0 0 0 .28-.84l-1.94-2a.5.5 0 0 0-.84.28Z"/>
-                            <path d="m12.83 19.82-.32.96a4 4 0 0 0-1.75 4.05 4 4 0 0 0 4.05-1.75l.96-.32a.5.5 0 0 0 .28-.84l-1.94-2a.5.5 0 0 0-.84.28Z"/>
-                            <path d="m2.18 12.83-.32.96a4 4 0 0 0-1.75 4.05 4 4 0 0 0 4.05-1.75l.96-.32a.5.5 0 0 0 .28-.84l-1.94-2a.5.5 0 0 0-.84.28Z"/>
-                            <path d="m19.82 5.18-.32.96a4 4 0 0 0-1.75 4.05 4 4 0 0 0 4.05-1.75l.96-.32a.5.5 0 0 0 .28-.84l-1.94-2a.5.5 0 0 0-.84.28Z"/>
-                        </svg>
-                        You unlock 10 levels of income
-                    </li>
-                    <li class="flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-growth text-indigo-600 mr-3">
-                            <path d="M4.35 12c.16 0 .32.01.48.02A1.9 1.9 0 0 1 7.2 14a1.9 1.9 0 0 1-1.37 3.32c-.16-.01-.32-.02-.48-.02h-.5a2.5 2.5 0 0 0 0 5h.5c.16 0 .32-.01.48-.02A1.9 1.9 0 0 1 7.2 19a1.9 1.9 0 0 1-1.37-3.32"/>
-                            <path d="M12 21V3"/>
-                            <path d="M16 8c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5Z"/>
-                        </svg>
-                        As your team duplicates and grows, you earn from each new member
-                    </li>
-                    <li class="flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-2 text-blue-600 mr-3">
-                            <path d="M14 19a6 6 0 0 0-12 0"/>
-                            <circle cx="8" cy="10" r="4"/>
-                            <path d="M22 19a6 6 0 0 0-12 0"/>
-                            <circle cx="16" cy="10" r="4"/>
-                        </svg>
-                        Reach <span class="highlight-value">100 total members (any depth)</span> → All 15 levels unlocked
-                    </li>
-                    <li class="flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-crown text-yellow-600 mr-3">
-                            <path d="m14.2 2-2.2 4-2.2-4"/>
-                            <path d="M5 12s-4 4-4 8 7 1 7 1h12s1-5-4-8-4-4-4-8-4 4-4 8-4-4-4-8-4 4-4 8-4 4-4 8z"/>
-                        </svg>
-                        Reach <span class="highlight-value">10,000 team size</span> → Become eligible for royalty
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Ready to Get Started? Section -->
-        <section id="get-started-section" class="card mt-8 text-center p-8 bg-gradient-to-r from-blue-700 to-teal-600 text-white">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">💬 Ready to Get Started?</h2>
-            <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-3xl mx-auto">
-                Join ETB today with just $20 and build your digital income empire — for life.
-            </p>
-            <a href="#" class="btn-secondary bg-white text-blue-700 border-white hover:bg-blue-800 hover:text-white">Join ETB Now!</a>
-        </section>
-    </div>
+    <!-- Call to Action -->
+    <section class="cta" id="get-started">
+        <div class="container">
+            <h2>Ready to Get Started?</h2>
+            <p>Join ETB today and become a part of a revolution that turns knowledge into capital and effort into income.</p>
+            <a href="#" class="btn btn-light">Join Now for $20</a>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8 mt-10 rounded-t-lg">
-        <div class="container mx-auto text-center px-4">
-            <p class="mb-4">&copy; 2023 ETB – Empower The Base. All rights reserved.</p>
-            <div class="flex justify-center space-x-4 text-sm">
-                <a href="#" class="hover:text-indigo-400 transition-colors">Privacy Policy</a>
-                <a href="#" class="hover:text-indigo-400 transition-colors">Terms of Service</a>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="logo">
+                        <i class="fas fa-graduation-cap logo-icon"></i>
+                        <h3>ETB</h3>
+                    </div>
+                    <p>Empowerment Through Business & Training - where learning and earning go side by side.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="contact-info">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#facilities">Facilities</a></li>
+                        <li><a href="#business-plan">Business Plan</a></li>
+                        <li><a href="#get-started">Join Now</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Empowerment Street, Business City</li>
+                        <li><i class="fas fa-phone"></i> +91-9341619361</li>
+                        <li><i class="fas fa-envelope"></i> info@etb-empowerment.com</li>
+                        <li><i class="fas fa-clock"></i> Monday-Friday: 9AM - 6PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 ETB - Empowerment Through Business & Training. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Lucide Icons CDN (Moved to end of body for correct loading) -->
-    <script src="https://cdn.jsdelivr.net/npm/lucide-static@latest/dist/umd/lucide.js"></script>
     <script>
-        // Initialize Lucide Icons after the DOM is fully loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            lucide.createIcons();
-
-            // Mobile menu toggle logic
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-
-            mobileMenuButton.addEventListener('click', function() {
-                mobileMenu.classList.toggle('hidden');
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu after clicking a link
+                    navMenu.classList.remove('show');
+                }
             });
-
-            // Close mobile menu when a link inside it is clicked
-            mobileMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
-                });
+        });
+        
+        // Active link highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav ul li a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
             });
-
-            // Navbar sticky/fixed on scroll logic
-            const navbar = document.getElementById('navbar');
-            const heroSection = document.getElementById('hero');
-
-            // Add an initial check in case the page is already scrolled down on load
-            if (window.scrollY > heroSection.offsetHeight / 2) {
-                navbar.classList.add('navbar-fixed');
-            }
-
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > heroSection.offsetHeight / 2) { // When scrolled past half of hero section
-                    navbar.classList.add('navbar-fixed');
-                } else {
-                    navbar.classList.remove('navbar-fixed');
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
                 }
             });
         });
